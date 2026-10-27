@@ -1,0 +1,12 @@
+# Minimal workflow for the NVAF triage agent test: gives fork pull requests a
+# CI run that GitHub holds for approval. It needs no secrets and no checkout.
+name: nvaf-triage-test
+on:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "NVAF triage test run for PR ${{ github.event.pull_request.number }}"
