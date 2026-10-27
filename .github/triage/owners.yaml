@@ -1,0 +1,23 @@
+# Service-to-owner mapping for the NVCF PR triage agent (test fork).
+# Format: see the nvcf-owner-routing skill. The last matching service wins.
+version: 1
+fallback: [jalajthanakinvidia]
+services:
+  - name: docs
+    paths: ["docs/**", "doc/**", "fern/**"]
+    owners: [jalajthanakinvidia]
+  - name: ci-tooling
+    paths: [".github/workflows/**", "ci/**", "tools/**"]
+    owners: [jalajthanakinvidia]
+  - name: infrastructure
+    paths: ["infra/**", "deploy/helm/cassandra/**", "deploy/helm/nats/**", "deploy/helm/openbao/**", "migrations/**"]
+    owners: [jalajthanakinvidia]
+  - name: control-plane
+    paths: ["src/control-plane-services/**", "src/uis/**", "src/invocation-plane-services/**"]
+    owners: [jalajthanakinvidia]
+  - name: compute-plane
+    paths: ["src/compute-plane-services/**", "deploy/stacks/nvcf-compute-plane/**"]
+    owners: [jalajthanakinvidia]
+safety:
+  max_changed_lines: 1000
+  max_changed_files: 50
